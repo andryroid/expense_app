@@ -49,20 +49,18 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           const Chart.fromValue("Single chart"),
           CardDetails.fromValue(title:'title',price:56,at:DateTime.now()),
           CardDetails.fromValue(title:'title',price:55,at:DateTime.now()),
           CardDetails.fromValue(title:'title',price:12,at:DateTime.now()),
-          CardDetails.fromValue(title:'title',price:20,at:DateTime.now()),
-          CardDetails.fromValue(title:'title',price:10,at:DateTime.now()),
-          CardDetails.fromValue(title:'title',price:5,at:DateTime.now()),
+          CardDetails.fromValue(title:'title',price:12,at:DateTime.now()),
+          CardDetails.fromValue(title:'title',price:12,at:DateTime.now())
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        tooltip: 'Add expense',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );

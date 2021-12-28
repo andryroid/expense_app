@@ -12,19 +12,23 @@ class CardDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children:  [
-          Text("Ar "+price.toString()),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children:  [
-              Text(title),
-              Text(at.day.toString()+' '+ at.month.toString()+' '+at.year.toString()),
-            ],
-          )
-        ],
+      height: 80,
+      child: Card(
+        elevation: 5,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children:  [
+            Text("Ar "+price.toString()),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children:  [
+                Text(title),
+                Text(at.day.toString()+' '+ at.month.toString()+' '+at.year.toString()),
+              ],
+            ),
+            const Text('remove')
+          ],
+        ),
       ),
     );
   }
