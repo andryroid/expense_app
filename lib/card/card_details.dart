@@ -16,8 +16,9 @@ class CardDetails extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.end,
         children:  [
-          Text(price.toString()),
+          Text("Ar "+price.toString()),
           Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children:  [
               Text(title),
               Text(at.day.toString()+' '+ at.month.toString()+' '+at.year.toString()),
