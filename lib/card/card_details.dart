@@ -1,16 +1,28 @@
 import 'package:flutter/material.dart';
 
 class CardDetails extends StatelessWidget {
-  final String _title;
-  final String _content;
-  const CardDetails.fromValue(this._title,this._content);
+  final String title;
+  final String price;
+  final String at;
+  CardDetails.fromValue({
+    required this.title,
+    required this.price,
+    required this.at
+  });
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Card(child: Text(_title),),
-      alignment: Alignment.center,
-      width: double.infinity,
-      height: 25,
+      child: Row(
+        children:  [
+          Text(price),
+          Column(
+            children:  [
+              Text(title),
+              Text(at),
+            ],
+          )
+        ],
+      ),
     );
   }
 }
