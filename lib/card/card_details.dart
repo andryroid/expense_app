@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class CardDetails extends StatelessWidget {
   final String title;
-  final String price;
-  final String at;
+  final double price;
+  final DateTime at;
   CardDetails.fromValue({
     required this.title,
     required this.price,
@@ -13,12 +13,14 @@ class CardDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children:  [
-          Text(price),
+          Text(price.toString()),
           Column(
             children:  [
               Text(title),
-              Text(at),
+              Text(at.day.toString()+' '+ at.month.toString()+' '+at.year.toString()),
             ],
           )
         ],

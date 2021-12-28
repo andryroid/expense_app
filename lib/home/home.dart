@@ -51,9 +51,12 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: <Widget>[
           const Chart.fromValue("Single chart"),
-          const CardDetails.fromValue("the title", "the content"),
-          const CardDetails.fromValue("the title 2 ", "the content"),
-          const CardDetails.fromValue("the title 3", "the content"),
+          CardDetails.fromValue(title:'title',price:56,at:DateTime.now()),
+          CardDetails.fromValue(title:'title',price:55,at:DateTime.now()),
+          CardDetails.fromValue(title:'title',price:12,at:DateTime.now()),
+          CardDetails.fromValue(title:'title',price:20,at:DateTime.now()),
+          CardDetails.fromValue(title:'title',price:10,at:DateTime.now()),
+          CardDetails.fromValue(title:'title',price:5,at:DateTime.now()),
         ],
       ),
       floatingActionButton: FloatingActionButton(
