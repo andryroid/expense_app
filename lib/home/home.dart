@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_main/card/card_details.dart';
+import 'package:flutter_main/chart/chart.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -49,6 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
         children: <Widget>[
+          const Chart.fromValue("Single chart"),
           const CardDetails.fromValue("the title", "the content"),
           const CardDetails.fromValue("the title 2 ", "the content"),
           const CardDetails.fromValue("the title 3", "the content"),
