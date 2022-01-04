@@ -21,9 +21,11 @@ class CardDetails extends StatelessWidget {
             Text("Ar "+price.toString()),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children:  [
-                Text(title),
-                Text(at.day.toString()+' '+ at.month.toString()+' '+at.year.toString()),
+                Text(title,style:const TextStyle(fontSize: 18)),
+                Text(at.day.toString()+' '+ at.month.toString()+' '+at.year.toString(),
+                style: const TextStyle(color:Colors.grey,fontSize: 10,fontWeight: FontWeight.bold)),
               ],
             ),
             const Text('remove')
