@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_main/card/card_details.dart';
-import 'package:flutter_main/chart/chart.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -21,19 +19,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
+  final amount = TextEditingController();
+  final title = TextEditingController();
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -43,26 +30,30 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Column(
-        children: <Widget>[
-          const Chart.fromValue("Single chart"),
-          CardDetails.fromValue(title:'title',price:56,at:DateTime.now()),
-          CardDetails.fromValue(title:'title',price:55,at:DateTime.now()),
-          CardDetails.fromValue(title:'title',price:12,at:DateTime.now()),
-          CardDetails.fromValue(title:'title',price:12,at:DateTime.now()),
-          CardDetails.fromValue(title:'title',price:12,at:DateTime.now())
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Add expense',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        appBar: AppBar(
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text("Expense App"),
+              Container(
+                  child: const ButtonBar(
+                children: [
+                  Text(
+                    'Add',
+                    style: TextStyle(fontSize: 15),
+                  )
+                ],
+              ))
+            ],
+          ),
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[],
+          ),
+        ) // This trailing comma makes auto-formatting nicer for build methods.
+        );
   }
 }
