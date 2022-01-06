@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_main/widgets/expense/add_expense.dart';
+import 'package:flutter_main/widgets/expense/chart.dart';
 import '../../models/expense.dart';
 import '../../widgets/expense/expense_list.dart';
 
@@ -65,13 +66,20 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [Text("Expense")],
           )),
-      body: SingleChildScrollView(
-        child: Container(
-          height: 500,
-          margin: const EdgeInsets.all(20),
-          child: expenses.isEmpty
-              ? const Text('No expense to show')
-              : ExpenseList(expenses),
+      body: Container(
+        margin: const EdgeInsets.all(15),
+        child: Column(
+          children: [
+            Chart(expenses),
+            const SizedBox(height: 30),
+            SingleChildScrollView(
+              child: Container(
+                child: expenses.isEmpty
+                    ? const Text('No expense')
+                    : ExpenseList(expenses),
+              ),
+            )
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
