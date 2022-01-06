@@ -40,7 +40,10 @@ class ExpenseCard extends StatelessWidget {
               )
             ],
           ),
-          const Text('remove')
+          const Icon(
+            Icons.delete_forever,
+            color: Colors.red,
+          )
         ]),
       ),
     );
