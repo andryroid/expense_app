@@ -26,11 +26,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final title = TextEditingController();
   final description = TextEditingController();
   // create expense object
-  final List<Expense> expenses = [
-    Expense("Mofo", "Kaly maraina", DateTime.now(), 500),
-    Expense("Mofo", "Kaly maraina", DateTime.now(), 500),
-    Expense("Mofo", "Kaly maraina", DateTime.now(), 500)
-  ];
+  final List<Expense> expenses = [];
 
   //add expense
   void handleAddExpense(String title, String description, double amount) {
@@ -74,7 +70,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Container(
           height: 500,
           margin: const EdgeInsets.all(20),
-          child: ExpenseList(expenses),
+          child: expenses.isEmpty
+              ? const Text('No expense to show')
+              : ExpenseList(expenses),
         ),
       ),
       floatingActionButton: FloatingActionButton(

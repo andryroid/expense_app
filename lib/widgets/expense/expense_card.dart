@@ -13,10 +13,12 @@ class ExpenseCard extends StatelessWidget {
       elevation: 5,
       child: Container(
         height: 50,
-        child: Row(children: [
+        child:
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Container(
-            decoration:
-                BoxDecoration(border: Border.all(color: Colors.grey, width: 2)),
+            decoration: BoxDecoration(
+                border: Border.all(
+                    color: Theme.of(context).secondaryHeaderColor, width: 2)),
             height: 35,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -30,7 +32,13 @@ class ExpenseCard extends StatelessWidget {
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [Text(_title), Text(_at.toString())],
+            children: [
+              Text(_title),
+              Text(
+                _at.toString(),
+                style: const TextStyle(color: Colors.grey),
+              )
+            ],
           ),
           const Text('remove')
         ]),

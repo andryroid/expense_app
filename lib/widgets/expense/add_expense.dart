@@ -6,18 +6,15 @@ class AddExpense extends StatefulWidget {
   AddExpense(this.handleAddExpense);
 
   @override
-  State<AddExpense> createState() => _AddExpenseState(handleAddExpense);
+  State<AddExpense> createState() => _AddExpenseState();
 }
 
 class _AddExpenseState extends State<AddExpense> {
-  final Function handleAddExpense;
   final titleController = TextEditingController();
 
   final descriptionController = TextEditingController();
 
   var amountController = TextEditingController();
-
-  _AddExpenseState(this.handleAddExpense);
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +40,9 @@ class _AddExpenseState extends State<AddExpense> {
         FloatingActionButton(
             onPressed: () {
               //add expense
-              handleAddExpense(titleController.text, descriptionController.text,
+              widget.handleAddExpense(
+                  titleController.text,
+                  descriptionController.text,
                   double.parse(amountController.text));
               showAboutDialog(
                   context: context,
