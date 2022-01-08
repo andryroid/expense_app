@@ -32,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
   //add expense
   void handleAddExpense(String title, String description, double amount) {
     setState(() {
-      expenses.add(Expense(title, description, DateTime.now(), 200));
+      expenses.add(Expense(title, description, DateTime.now(), amount));
     });
   }
 
@@ -72,13 +72,9 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             Chart(expenses),
             const SizedBox(height: 30),
-            SingleChildScrollView(
-              child: Container(
-                child: expenses.isEmpty
-                    ? const Text('No expense')
-                    : ExpenseList(expenses),
-              ),
-            )
+            Container(
+              child: ExpenseList(expenses),
+            ),
           ],
         ),
       ),

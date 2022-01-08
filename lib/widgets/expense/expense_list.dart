@@ -6,12 +6,15 @@ class ExpenseList extends StatelessWidget {
   final List<Expense> expenses;
   ExpenseList(this.expenses);
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemBuilder: (context, index) => ExpenseCard(
-            DateTime.now().toString(),
-            expenses[index].getAmount(),
-            expenses[index].getTitle(),
-            expenses[index].getAt()),
-        itemCount: expenses.length);
+    return Container(
+      height: 250,
+      child: ListView.builder(
+          itemBuilder: (context, index) => ExpenseCard(
+              "0",
+              expenses[index].getAmount(),
+              expenses[index].getTitle(),
+              expenses[index].getAt()),
+          itemCount: expenses.length),
+    );
   }
 }

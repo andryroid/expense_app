@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ExpenseCard extends StatelessWidget {
   final String _id;
@@ -11,40 +12,14 @@ class ExpenseCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 5,
-      child: Container(
-        height: 50,
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Container(
-            decoration: BoxDecoration(
-                border: Border.all(
-                    color: Theme.of(context).secondaryHeaderColor, width: 2)),
-            height: 35,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Ar $_price",
-                  style: const TextStyle(fontSize: 15),
-                ),
-              ],
-            ),
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(_title),
-              Text(
-                _at.toString(),
-                style: const TextStyle(color: Colors.grey),
-              )
-            ],
-          ),
-          const Icon(
-            Icons.delete_forever,
-            color: Colors.red,
-          )
-        ]),
+      child: ListTile(
+        leading: CircleAvatar(
+            backgroundColor: Theme.of(context).secondaryHeaderColor,
+            child: FittedBox(fit: BoxFit.fill, child: Text("$_price")),
+            radius: 25),
+        title: Text(_title),
+        subtitle: Text(DateFormat.yMMMd().format(_at)),
+        trailing: const Icon(Icons.delete, color: Colors.red),
       ),
     );
   }
