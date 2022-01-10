@@ -32,7 +32,15 @@ class _MyHomePageState extends State<MyHomePage> {
   //add expense
   void handleAddExpense(String title, String description, double amount) {
     setState(() {
-      expenses.add(Expense(title, description, DateTime.now(), amount));
+      int newId = expenses.length + 1;
+      expenses.add(Expense(newId, title, description, DateTime.now(), amount));
+    });
+  }
+
+  // remove expense
+  void handleRemoveExpense(int id) {
+    setState(() {
+      expenses.removeWhere((element) => element.getId() == id);
     });
   }
 
