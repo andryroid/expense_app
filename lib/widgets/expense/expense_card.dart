@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class ExpenseCard extends StatelessWidget {
-  final String _id;
+  final int _id;
   final String _price;
   final String _title;
   final DateTime _at;
 
-  ExpenseCard(this._id, this._price, this._title, this._at);
+  final Function handleRemoveExpense;
+
+  ExpenseCard(
+      this._id, this._price, this._title, this._at, this.handleRemoveExpense);
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -19,7 +22,13 @@ class ExpenseCard extends StatelessWidget {
             radius: 25),
         title: Text(_title),
         subtitle: Text(DateFormat.yMMMd().format(_at)),
-        trailing: const Icon(Icons.delete, color: Colors.red),
+        trailing: IconButton(
+          icon: const Icon(
+            Icons.delete,
+            color: Colors.red,
+          ),
+          onPressed: () => handleRemoveExpense(_id),
+        ),
       ),
     );
   }

@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Chart(expenses),
             const SizedBox(height: 30),
             Container(
-              child: ExpenseList(expenses),
+              child: ExpenseList(expenses, handleRemoveExpense),
             ),
           ],
         ),

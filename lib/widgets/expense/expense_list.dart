@@ -4,16 +4,19 @@ import '../../models/expense.dart';
 
 class ExpenseList extends StatelessWidget {
   final List<Expense> expenses;
-  ExpenseList(this.expenses);
+  final Function handleRemoveExpense;
+  ExpenseList(this.expenses, this.handleRemoveExpense);
   Widget build(BuildContext context) {
     return Container(
       height: 250,
       child: ListView.builder(
           itemBuilder: (context, index) => ExpenseCard(
-              "0",
-              expenses[index].getAmount(),
-              expenses[index].getTitle(),
-              expenses[index].getAt()),
+                expenses[index].getId(),
+                expenses[index].getAmount(),
+                expenses[index].getTitle(),
+                expenses[index].getAt(),
+                handleRemoveExpense,
+              ),
           itemCount: expenses.length),
     );
   }
