@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class AddExpense extends StatefulWidget {
   final Function handleAddExpense;
@@ -11,11 +12,25 @@ class AddExpense extends StatefulWidget {
 
 class _AddExpenseState extends State<AddExpense> {
   final titleController = TextEditingController();
-  final dateController = TextEditingController();
+  var _pickedDate = null;
 
   final descriptionController = TextEditingController();
 
   var amountController = TextEditingController();
+
+  void _presentDatePicker() {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2022),
+      lastDate: DateTime.now(),
+    ).then((value) {
+      if (value == null) return;
+      setState(() {
+        _pickedDate = value;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,15 +53,20 @@ class _AddExpenseState extends State<AddExpense> {
             decoration: const InputDecoration(
                 labelText: "Amount", icon: Icon(Icons.price_check_rounded)),
             keyboardType: TextInputType.number),
-        TextField(
-          controller: dateController,
-          decoration: const InputDecoration(
-              labelText: "Choose a date", icon: Icon(Icons.calendar_today)),
-          keyboardType: TextInputType.datetime,
-          enabled: false,
-          onTap: () {
-            print('test');
-          },
+        Container(
+          height: 70,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Icon(Icons.calendar_today),
+              Text(_pickedDate == null
+                  ? 'Please pick date'
+                  : DateFormat.yMMMMd().format(_pickedDate)),
+              TextButton(
+                  onPressed: () => _presentDatePicker(),
+                  child: const Text("Choose date"))
+            ],
+          ),
         ),
         FloatingActionButton(
             onPressed: () {
@@ -54,14 +74,15 @@ class _AddExpenseState extends State<AddExpense> {
               widget.handleAddExpense(
                   titleController.text,
                   descriptionController.text,
-                  double.parse(amountController.text));
+                  double.parse(amountController.text),
+                  _pickedDate);
               showAboutDialog(
                   context: context,
                   applicationName: "Successfully added!",
                   applicationLegalese: "",
                   applicationIcon: const Icon(Icons.done));
             },
-            child: const Icon(Icons.add_moderator_rounded))
+            child: const Icon(Icons.add))
       ]),
     );
   }

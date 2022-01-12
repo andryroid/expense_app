@@ -30,10 +30,11 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Expense> expenses = [];
 
   //add expense
-  void handleAddExpense(String title, String description, double amount) {
+  void handleAddExpense(
+      String title, String description, double amount, DateTime at) {
     setState(() {
       int newId = expenses.length + 1;
-      expenses.add(Expense(newId, title, description, DateTime.now(), amount));
+      expenses.add(Expense(newId, title, description, at, amount));
     });
   }
 
