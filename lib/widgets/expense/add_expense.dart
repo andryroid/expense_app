@@ -11,6 +11,7 @@ class AddExpense extends StatefulWidget {
 
 class _AddExpenseState extends State<AddExpense> {
   final titleController = TextEditingController();
+  final dateController = TextEditingController();
 
   final descriptionController = TextEditingController();
 
@@ -37,6 +38,16 @@ class _AddExpenseState extends State<AddExpense> {
             decoration: const InputDecoration(
                 labelText: "Amount", icon: Icon(Icons.price_check_rounded)),
             keyboardType: TextInputType.number),
+        TextField(
+          controller: dateController,
+          decoration: const InputDecoration(
+              labelText: "Choose a date", icon: Icon(Icons.calendar_today)),
+          keyboardType: TextInputType.datetime,
+          enabled: false,
+          onTap: () {
+            print('test');
+          },
+        ),
         FloatingActionButton(
             onPressed: () {
               //add expense
